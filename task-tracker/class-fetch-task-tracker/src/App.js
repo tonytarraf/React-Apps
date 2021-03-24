@@ -6,50 +6,79 @@ import AddTask from "./components/AddTask";
 class App extends Component {
     state = {
         showTaskForm: false,
-
-        tasks: [
-            {
-                id: 1,
-                text: "Doctors Appointment",
-                day: "Feb 5th at 2:30pm",
-                reminder: true,
-            },
-
-            {
-                id: 2,
-                text: "Meeting at School",
-                day: "Feb 6th at 1:30pm",
-                reminder: true,
-            },
-        ],
+        tasks: [],
     };
 
     setShowTaskForm = (showTaskForm) => {
         this.setState({ showTaskForm: !showTaskForm });
     };
 
-    // Add Task
-    addTask = (task) => {
-        const id = Math.floor(Math.random() * 1000) + 1;
+    // Fetch Tasks
+    fetchTasks = async () => {
+        const res = await fetch("http://localhost:5000/tasks");
+        const data = await res.json();
 
-        const newTask = { id, ...task };
+        this.setState({ tasks: data });
+    };
+
+    // Fetch Task
+    fetchTask = async (taskId) => {
+        const res = await fetch(`http://localhost:5000/tasks/${taskId}`);
+        const data = await res.json();
+
+        return data;
+    };
+
+    // Add Task
+    addTask = async (task) => {
+        const res = await fetch("http://localhost:5000/tasks", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(task),
+        });
+
+        const newTask = await res.json();
+
         this.setState({ tasks: [...this.state.tasks, newTask] });
     };
 
     // Delete Task
-    deleteTask = (taskId) => {
+    deleteTask = async (taskId) => {
+        await fetch(`http://localhost:5000/tasks/${taskId}`, {
+            method: "DELETE",
+        });
+
         const tasks = this.state.tasks.filter((task) => task.id !== taskId);
         this.setState({ tasks: tasks });
     };
 
     // Toggle Reminder
-    toggleReminder = (taskId) => {
+    toggleReminder = async (taskId) => {
+        const task = await this.fetchTask(taskId);
+        const updatedTask = { ...task, reminder: !task.reminder };
+
+        const res = await fetch(`http://localhost:5000/tasks/${taskId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedTask),
+        });
+
+        const data = await res.json();
+
         const tasks = this.state.tasks.map((task) =>
-            task.id === taskId ? { ...task, reminder: !task.reminder } : task
+            task.id === taskId ? { ...task, reminder: data.reminder } : task
         );
 
         this.setState({ tasks: tasks });
     };
+
+    componentDidMount() {
+        this.fetchTasks();
+    }
 
     render() {
         return (
