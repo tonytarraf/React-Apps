@@ -13,7 +13,10 @@ class DeleteModal extends Component {
 		return (
 			<Modal centered show={showDeleteModal} onHide={setShowDeleteModal}>
 				<Modal.Header closeButton>
-					<Modal.Title>Delete User</Modal.Title>
+					<Modal.Title>
+						<i className="fas fa-exclamation-triangle"></i>
+						<span>Delete User</span>
+					</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body>

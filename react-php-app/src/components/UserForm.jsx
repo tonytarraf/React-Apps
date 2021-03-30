@@ -14,27 +14,30 @@ class UserForm extends Component {
 	// User Form Validation
 	validateUserForm = () => {
 		if (this.props.user.fname === "") {
-			alert("First Name is required.");
+			this.props.showError("First Name is required.");
+
 			return false;
 		}
 
 		if (this.props.user.lname === "") {
-			alert("Last Name is required.");
+			this.props.showError("Last Name is required.");
+
 			return false;
 		}
 
 		if (this.props.user.email === "") {
-			alert("Email Address is required.");
+			this.props.showError("Email Address is required.");
+
 			return false;
 		} else {
 			if (!this.validateEmailAddress(this.props.user.email)) {
-				alert("Please enter a valid email address.");
+				this.props.showError("Please enter a valid email address.");
 				return false;
 			}
 		}
 
 		if (this.props.user.country === -1) {
-			alert("Country is required.");
+			this.props.showError("Country is required.");
 			return false;
 		}
 

@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import axios from "axios";
 import UserForm from "./UserForm";
 import Users from "./Users";
+import ErrorModal from "./ErrorModal";
 import DeleteModal from "./DeleteModal";
 
 class Home extends Component {
 	state = {
 		showAddUserFormFlag: false,
-
 		showDeleteModal: false,
-
+		showErrorModal: false,
+		errorMessage: "",
+		userId: -1,
+		users: [],
 		user: {
 			userId: -1,
 			fname: "",
@@ -19,10 +22,6 @@ class Home extends Component {
 			country: -1,
 			isAdmin: false,
 		},
-
-		userId: -1,
-
-		users: [],
 	};
 
 	// Show/Hide User Form
@@ -119,7 +118,8 @@ class Home extends Component {
 
 		if (flag === -1) {
 			const msg = data[1];
-			alert(msg);
+
+			this.showError(msg);
 		} else {
 			this.state.user.userId === -1 && this.resetUserForm();
 			this.loadUsersTable();
@@ -142,7 +142,8 @@ class Home extends Component {
 
 		if (flag === -1) {
 			const msg = data[1];
-			alert(msg);
+
+			this.showError(msg);
 		} else {
 			const usersArr = data[1];
 			this.setState({ users: usersArr });
@@ -165,7 +166,8 @@ class Home extends Component {
 
 		if (flag === -1) {
 			const msg = data[1];
-			alert(msg);
+
+			this.showError(msg);
 		} else {
 			const userData = data[1];
 
@@ -209,7 +211,8 @@ class Home extends Component {
 
 		if (flag === -1) {
 			const msg = data[1];
-			alert(msg);
+
+			this.showError(msg);
 		} else {
 			this.setShowDeleteModal(-1);
 			this.loadUsersTable();
@@ -220,6 +223,12 @@ class Home extends Component {
 	setShowDeleteModal = (userId) => {
 		this.setState({ userId });
 		this.setState({ showDeleteModal: !this.state.showDeleteModal });
+	};
+
+	// Set Show Error Modal
+	showError = (errorMessage) => {
+		this.setState({ errorMessage });
+		this.setState({ showErrorModal: !this.state.showErrorModal });
 	};
 
 	render() {
@@ -236,6 +245,7 @@ class Home extends Component {
 					setUserPhoneNumber={this.setUserPhoneNumber}
 					setUserCountry={this.setUserCountry}
 					setUserIsAdmin={this.setUserIsAdmin}
+					showError={this.showError}
 				/>
 
 				<Users
@@ -249,6 +259,12 @@ class Home extends Component {
 					deleteUser={this.deleteUser}
 					showDeleteModal={this.state.showDeleteModal}
 					setShowDeleteModal={this.setShowDeleteModal}
+				/>
+
+				<ErrorModal
+					showErrorModal={this.state.showErrorModal}
+					showError={this.showError}
+					message={this.state.errorMessage}
 				/>
 			</>
 		);
