@@ -189,7 +189,7 @@ class Home extends Component {
 			};
 
 			this.setState({ user });
-			this.setState({ showAddUserFormFlag: !this.state.showAddUserFormFlag });
+			this.setState({ showAddUserFormFlag: true });
 		}
 	};
 
