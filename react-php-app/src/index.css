@@ -2,15 +2,9 @@
 	border-radius: 0 !important;
 }
 
-.aboutTitle {
-	margin-top: 30px;
-	text-align: center;
-}
-
-.aboutDataRowContainer {
-	margin-top: 80px;
-}
-
+/* ################################### */
+/* Footer */
+/* ################################### */
 footer {
 	font-size: 14px;
 	color: #ffffff;
@@ -21,13 +15,54 @@ footer {
 	bottom: 0;
 	z-index: 2;
 }
+/* ################################### */
+/* END OF Footer */
+/* ################################### */
 
+/* ################################### */
+/* About Page */
+/* ################################### */
+.aboutTitle {
+	margin-top: 30px;
+	text-align: center;
+}
+
+.aboutDataRowContainer {
+	margin-top: 80px;
+}
+/* ################################### */
+/* END OF About Page */
+/* ################################### */
+
+/* ################################### */
+/* User Form */
+/* ################################### */
 .addUserFormBtnsContainer {
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
 }
 
+.formCheckboxContainer {
+	display: flex;
+	align-items: center;
+	padding-top: 17px;
+}
+/* ################################### */
+/* END OF User Form */
+/* ################################### */
+
+.editUserBtn {
+	color: #0057bf;
+}
+
+.deleteUserBtn {
+	color: #d10000;
+}
+
+/* ################################### */
+/* Buttons */
+/* ################################### */
 .btnClassGrey {
 	background-color: #343a40;
 	border: 1px solid #343a40;
@@ -73,25 +108,17 @@ footer {
 	outline: none;
 }
 
-.formCheckboxContainer {
-	display: flex;
-	align-items: center;
-	padding-top: 17px;
-}
-
 .tableBtn {
 	background-color: transparent;
 	border: 0;
 }
+/* ################################### */
+/* END OF Buttons */
+/* ################################### */
 
-.editUserBtn {
-	color: #0057bf;
-}
-
-.deleteUserBtn {
-	color: #d10000;
-}
-
+/* ################################### */
+/* Modal */
+/* ################################### */
 .modal-open .modal {
 	overflow-y: hidden !important;
 }
@@ -123,3 +150,6 @@ footer {
 .modal .biggerTextModalBody {
 	font-size: 16px;
 }
+/* ################################### */
+/* END OF Modal */
+/* ################################### */
