@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Like from "./common/like";
 import Pagination from "./common/pagination";
 import { getMovies } from "../services/fakeMovieService";
-import { paginate } from "./utils/paginate";
+import { paginate } from "../utils/paginate";
 
 class Movies extends Component {
     state = {

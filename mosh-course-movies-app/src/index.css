@@ -3,6 +3,10 @@ body {
     padding: 20px 0;
 }
 
+.table {
+    table-layout: fixed;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }
