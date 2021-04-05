@@ -1,0 +1,1 @@
+To update npm to a specific version globally, run: npm install -g npm@7.8.0
