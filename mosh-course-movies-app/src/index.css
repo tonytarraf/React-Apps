@@ -7,6 +7,6 @@ body {
     table-layout: fixed;
 }
 
-.cursor-pointer {
+.clickable {
     cursor: pointer;
 }
