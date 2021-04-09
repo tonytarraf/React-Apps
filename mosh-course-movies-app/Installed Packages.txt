@@ -1,0 +1,7 @@
+1) npm i bootstrap
+
+2) npm i lodash
+
+3) npm i prop-types
+
+3) npm i react-router-dom
