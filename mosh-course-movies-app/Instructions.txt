@@ -5,3 +5,5 @@
 3) npm i prop-types
 
 3) npm i react-router-dom
+
+4) npm i joi-browser
