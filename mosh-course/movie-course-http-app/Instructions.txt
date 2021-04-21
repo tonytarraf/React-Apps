@@ -1,0 +1,7 @@
+1) npm i
+
+2) npm i axios
+
+3) npm i react-toastify@4.1
+
+4) npm install --save @sentry/react @sentry/tracing

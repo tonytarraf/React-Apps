@@ -1,0 +1,15 @@
+1) npm i bootstrap
+
+2) npm i lodash
+
+3) npm i prop-types
+
+3) npm i react-router-dom
+
+4) npm i joi-browser
+
+5) npm i axios
+
+6) npm i react-toastify@4.1
+
+7) npm install --save @sentry/react @sentry/tracing
