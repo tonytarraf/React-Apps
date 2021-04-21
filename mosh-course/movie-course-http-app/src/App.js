@@ -41,7 +41,7 @@ class App extends Component {
         this.setState({ posts });
     };
 
-    handleUpdate = async (post) => {
+    handleUpdate = async post => {
         post.title = "UPDATED";
 
         await http.put(`${config.apiEndpoint}/${post.id}`, post);
@@ -52,16 +52,16 @@ class App extends Component {
         this.setState({ posts });
     };
 
-    handleDelete = async (post) => {
+    handleDelete = async post => {
         const originalPosts = this.state.posts;
 
-        const posts = this.state.posts.filter((p) => p.id !== post.id);
+        const posts = this.state.posts.filter(p => p.id !== post.id);
         this.setState({ posts });
 
         try {
             await http.delete(`${config.apiEndpoint}/${post.id}`);
         } catch (e) {
-            if (e.response && e.response === 404) {
+            if (e.response && e.response.status === 404) {
                 toast.error("This post has already been deleted.");
             }
 
@@ -85,7 +85,7 @@ class App extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.posts.map((post) => (
+                        {this.state.posts.map(post => (
                             <tr key={post.id}>
                                 <td>{post.title}</td>
                                 <td>
